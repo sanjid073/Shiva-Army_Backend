@@ -1,12 +1,13 @@
-# Toy Shop
+# Shiva Army
 
 It is a Full stack application made with ReactJS, mongodb, firebase, bootstrap CSS etc...
 
-## Live Demo of this website : https://toy-shop-272b5.web.app/
+## Live Demo of this website : 
 
 ## Features
+- let me finis
 
-- Load Data from database
+<!-- - Load Data from database
 - User can order offers
 - User can Add Review
 - User information and orders details saved in database
@@ -14,7 +15,7 @@ It is a Full stack application made with ReactJS, mongodb, firebase, bootstrap C
 - User can Delete Order from Order List
 - Admin can manage all orders
 - Admin can post a New order 
-- Google Authentication
+- Google Authentication -->
 
   
 # 💻 Developed By
@@ -44,8 +45,8 @@ It is a Full stack application made with ReactJS, mongodb, firebase, bootstrap C
 
 ## Screenshot
 
-![ss](https://i.ibb.co/N3dLdyL/Fire-Shot-Capture-031-React-App-localhost.png)
+<!-- ![ss](https://i.ibb.co/N3dLdyL/Fire-Shot-Capture-031-React-App-localhost.png)
 ![ss](https://i.ibb.co/gz0MNgj/Fire-Shot-Capture-032-React-App-localhost.png)
 ![ss](https://i.ibb.co/Z1Q9MCT/Fire-Shot-Capture-033-React-App-localhost.png)
-![ss](https://i.ibb.co/7St2cGB/Fire-Shot-Capture-036-React-App-localhost.png)
+![ss](https://i.ibb.co/7St2cGB/Fire-Shot-Capture-036-React-App-localhost.png) -->
 
