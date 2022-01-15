@@ -24,10 +24,31 @@ async function run() {
 
     const database = client.db("ShivaArmy");
     const analysisCollection = database.collection("analysis");
+    const introCollection = database.collection("intro");
     const accordionCollection = database.collection("Accordion");
     const aboutTextCollection = database.collection("AboutText");
     const tokenomoicsCollection = database.collection("Tokenomoics");
-    const usersCollection = database.collection("Users");
+    const contactCollection = database.collection("Contact");
+
+     // add intro text
+     app.post("/intro", async (req, res) => {
+      const intro = req.body;
+      const result = await introCollection.insertOne(intro);
+      res.json(result);
+    });
+    // get intro
+    app.get("/intro", async (req, res) => {
+      const review = await introCollection.find({}).toArray();
+      res.json(review);
+    });
+     //delete intro from the database
+     app.delete("/deleteIntro/:id", async (req, res) => {
+      const result = await introCollection.deleteOne({
+        _id: ObjectId(req.params.id),
+      });
+      res.send(result);
+    });
+
 
      // add analysis
      app.post("/analysis", async (req, res) => {
@@ -90,6 +111,7 @@ async function run() {
       });
       res.send(result);
     });
+    
      // add tokenomoics text
      app.post("/tokenomoics", async (req, res) => {
       const tokenomoics = req.body;
@@ -106,6 +128,27 @@ async function run() {
      app.delete("/deleteTokenomoics/:id", async (req, res) => {
        console.log('dgf');
       const result = await tokenomoicsCollection.deleteOne({
+        _id: ObjectId(req.params.id),
+      });
+      res.send(result);
+    });
+
+     // add contact text
+     app.post("/contact", async (req, res) => {
+      const contact = req.body;
+      const result = await contactCollection.insertOne(contact);
+      console.log(result)
+      res.json(result);
+    });
+    // get contact text
+    app.get("/contact", async (req, res) => {
+      const review = await contactCollection.find({}).toArray();
+      res.json(review);
+    });
+     //delete contact text from the database
+     app.delete("/deleteContact/:id", async (req, res) => {
+       console.log('dgf');
+      const result = await contactCollection.deleteOne({
         _id: ObjectId(req.params.id),
       });
       res.send(result);
