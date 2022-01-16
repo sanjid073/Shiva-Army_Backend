@@ -28,6 +28,7 @@ async function run() {
     const accordionCollection = database.collection("Accordion");
     const aboutTextCollection = database.collection("AboutText");
     const tokenomoicsCollection = database.collection("Tokenomoics");
+    const tokenomoicsSubHeadingCollection = database.collection("TokenomoicsSubHeading");
     const contactCollection = database.collection("Contact");
 
      // add intro text
@@ -48,6 +49,26 @@ async function run() {
       });
       res.send(result);
     });
+
+     // add tokenomoicsSubHeading text
+     app.post("/tokenomoicsSubHeading", async (req, res) => {
+      const tokenomoicsSubHeading = req.body;
+      const result = await tokenomoicsSubHeadingCollection.insertOne(tokenomoicsSubHeading);
+      res.json(result);
+    });
+    // get tokenomoicsSubHeading
+    app.get("/tokenomoicsSubHeading", async (req, res) => {
+      const review = await tokenomoicsSubHeadingCollection.find({}).toArray();
+      res.json(review);
+    });
+     //delete tokenomoicsSubHeading from the database
+     app.delete("/deleteTokenomoicsSubHeading/:id", async (req, res) => {
+      const result = await tokenomoicsSubHeadingCollection.deleteOne({
+        _id: ObjectId(req.params.id),
+      });
+      res.send(result);
+    });
+
 
 
      // add analysis
