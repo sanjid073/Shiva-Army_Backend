@@ -9,10 +9,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.0th5g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.tvjel.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-
 
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
@@ -28,11 +25,13 @@ async function run() {
     const accordionCollection = database.collection("Accordion");
     const aboutTextCollection = database.collection("AboutText");
     const tokenomoicsCollection = database.collection("Tokenomoics");
-    const tokenomoicsSubHeadingCollection = database.collection("TokenomoicsSubHeading");
+    const tokenomoicsSubHeadingCollection = database.collection(
+      "TokenomoicsSubHeading"
+    );
     const contactCollection = database.collection("Contact");
 
-     // add intro text
-     app.post("/intro", async (req, res) => {
+    // add intro text
+    app.post("/intro", async (req, res) => {
       const intro = req.body;
       const result = await introCollection.insertOne(intro);
       res.json(result);
@@ -42,18 +41,20 @@ async function run() {
       const review = await introCollection.find({}).toArray();
       res.json(review);
     });
-     //delete intro from the database
-     app.delete("/deleteIntro/:id", async (req, res) => {
+    //delete intro from the database
+    app.delete("/deleteIntro/:id", async (req, res) => {
       const result = await introCollection.deleteOne({
         _id: ObjectId(req.params.id),
       });
       res.send(result);
     });
 
-     // add tokenomoicsSubHeading text
-     app.post("/tokenomoicsSubHeading", async (req, res) => {
+    // add tokenomoicsSubHeading text
+    app.post("/tokenomoicsSubHeading", async (req, res) => {
       const tokenomoicsSubHeading = req.body;
-      const result = await tokenomoicsSubHeadingCollection.insertOne(tokenomoicsSubHeading);
+      const result = await tokenomoicsSubHeadingCollection.insertOne(
+        tokenomoicsSubHeading
+      );
       res.json(result);
     });
     // get tokenomoicsSubHeading
@@ -61,21 +62,19 @@ async function run() {
       const review = await tokenomoicsSubHeadingCollection.find({}).toArray();
       res.json(review);
     });
-     //delete tokenomoicsSubHeading from the database
-     app.delete("/deleteTokenomoicsSubHeading/:id", async (req, res) => {
+    //delete tokenomoicsSubHeading from the database
+    app.delete("/deleteTokenomoicsSubHeading/:id", async (req, res) => {
       const result = await tokenomoicsSubHeadingCollection.deleteOne({
         _id: ObjectId(req.params.id),
       });
       res.send(result);
     });
 
-
-
-     // add analysis
-     app.post("/analysis", async (req, res) => {
+    // add analysis
+    app.post("/analysis", async (req, res) => {
       const analysis = req.body;
       const result = await analysisCollection.insertOne(analysis);
-      console.log(result)
+      console.log(result);
       res.json(result);
     });
     // get analysis
@@ -83,20 +82,20 @@ async function run() {
       const review = await analysisCollection.find({}).toArray();
       res.json(review);
     });
-     //delete analysis from the database
-     app.delete("/deleteAnalysis/:id", async (req, res) => {
-       console.log('dgf');
+    //delete analysis from the database
+    app.delete("/deleteAnalysis/:id", async (req, res) => {
+      console.log("dgf");
       const result = await analysisCollection.deleteOne({
         _id: ObjectId(req.params.id),
       });
       res.send(result);
     });
 
-     // add faq qustion and answer
-     app.post("/accordion", async (req, res) => {
+    // add faq qustion and answer
+    app.post("/accordion", async (req, res) => {
       const accordion = req.body;
       const result = await accordionCollection.insertOne(accordion);
-      console.log(result)
+      console.log(result);
       res.json(result);
     });
     // get faq
@@ -104,19 +103,19 @@ async function run() {
       const review = await accordionCollection.find({}).toArray();
       res.json(review);
     });
-     //delete faq from the database
-     app.delete("/deleteAccordion/:id", async (req, res) => {
-       console.log('dgf');
+    //delete faq from the database
+    app.delete("/deleteAccordion/:id", async (req, res) => {
+      console.log("dgf");
       const result = await accordionCollection.deleteOne({
         _id: ObjectId(req.params.id),
       });
       res.send(result);
     });
-     // add about text
-     app.post("/aboutText", async (req, res) => {
+    // add about text
+    app.post("/aboutText", async (req, res) => {
       const aboutText = req.body;
       const result = await aboutTextCollection.insertOne(aboutText);
-      console.log(result)
+      console.log(result);
       res.json(result);
     });
     // get about text
@@ -124,20 +123,20 @@ async function run() {
       const review = await aboutTextCollection.find({}).toArray();
       res.json(review);
     });
-     //delete about text from the database
-     app.delete("/deleteAboutText/:id", async (req, res) => {
-       console.log('dgf');
+    //delete about text from the database
+    app.delete("/deleteAboutText/:id", async (req, res) => {
+      console.log("dgf");
       const result = await aboutTextCollection.deleteOne({
         _id: ObjectId(req.params.id),
       });
       res.send(result);
     });
-    
-     // add tokenomoics text
-     app.post("/tokenomoics", async (req, res) => {
+
+    // add tokenomoics text
+    app.post("/tokenomoics", async (req, res) => {
       const tokenomoics = req.body;
       const result = await tokenomoicsCollection.insertOne(tokenomoics);
-      console.log(result)
+      console.log(result);
       res.json(result);
     });
     // get tokenomoics text
@@ -145,20 +144,20 @@ async function run() {
       const review = await tokenomoicsCollection.find({}).toArray();
       res.json(review);
     });
-     //delete tokenomoics text from the database
-     app.delete("/deleteTokenomoics/:id", async (req, res) => {
-       console.log('dgf');
+    //delete tokenomoics text from the database
+    app.delete("/deleteTokenomoics/:id", async (req, res) => {
+      console.log("dgf");
       const result = await tokenomoicsCollection.deleteOne({
         _id: ObjectId(req.params.id),
       });
       res.send(result);
     });
 
-     // add contact text
-     app.post("/contact", async (req, res) => {
+    // add contact text
+    app.post("/contact", async (req, res) => {
       const contact = req.body;
       const result = await contactCollection.insertOne(contact);
-      console.log(result)
+      console.log(result);
       res.json(result);
     });
     // get contact text
@@ -166,15 +165,14 @@ async function run() {
       const review = await contactCollection.find({}).toArray();
       res.json(review);
     });
-     //delete contact text from the database
-     app.delete("/deleteContact/:id", async (req, res) => {
-       console.log('dgf');
+    //delete contact text from the database
+    app.delete("/deleteContact/:id", async (req, res) => {
+      console.log("dgf");
       const result = await contactCollection.deleteOne({
         _id: ObjectId(req.params.id),
       });
       res.send(result);
     });
-
   } finally {
     //   await client.close();
   }
